@@ -178,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements OnBackPressedList
 
         time = format2.format(calendar.getTime());
         initFirebase();
+        Log.d("storename", "onCreate: " + pref.getString("storename", ""));
     }
 
     public void initFirebase() {
@@ -731,7 +732,7 @@ public class MainActivity extends AppCompatActivity implements OnBackPressedList
             sam4sBuilder.addFeedLine(2);
             sam4sBuilder.addCut(Sam4sBuilder.CUT_FEED);
             Log.d("daon_test", "table = "+printOrderModel.getTable());
-            if (printOrderModel.getOrdertype().equals("card")) {
+            if (printOrderModel.getAuthnum().length() > 2) {
                 Thread.sleep(100);
                 sam4sPrint.sendData(sam4sBuilder);
                 Thread.sleep(100);
